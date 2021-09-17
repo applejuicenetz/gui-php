@@ -20,7 +20,11 @@ ENV GUI_REFRESH_SEARCH 30
 ENV GUI_SHOW_NEWS 1
 ENV GUI_SHOW_SHARE 1
 
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+RUN apt update && \
+    apt install -y --no-install-recommends libpng-dev \
+    && docker-php-ext-install gd \
+    && apt clean && \
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     echo 'variables_order=EGPCS' > /usr/local/etc/php/conf.d/phpaj.ini && \
     ln -sf /dev/null /var/log/apache2/access.log && \
     ln -sf /dev/null /var/log/apache2/error.log && \

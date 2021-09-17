@@ -1,6 +1,8 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.27.7
+- restore gd stuff for partlist
 
 ## 0.27.6
 - correct rel info url
